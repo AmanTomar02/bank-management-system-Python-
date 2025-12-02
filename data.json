@@ -1,0 +1,34 @@
+[
+    {
+        "name": "harsh",
+        "Age": 23,
+        "email": "harsh@gmial.com",
+        "Pin": "1234",
+        "Account_Number": "8LOU6%",
+        "Balance": 0
+    },
+    {
+        "name": "maan",
+        "Age": 23,
+        "email": "maan@gmail.com\t",
+        "Pin": "1234",
+        "Account_Number": "J#47hR",
+        "Balance": 3000
+    },
+    {
+        "name": "Aman",
+        "Age": 18,
+        "email": "at8871790@gmail.com",
+        "Pin": 1234,
+        "Account_Number": "ADGePY",
+        "Balance": 0
+    },
+    {
+        "name": "akash",
+        "Age": 18,
+        "email": "akash@gmail.com",
+        "Pin": 1234,
+        "Account_Number": "HxiGQj",
+        "Balance": 0
+    }
+]
