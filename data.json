@@ -5,7 +5,7 @@
         "email": "Aman@gmail.com",
         "Pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
         "Account_Number": "6XCBNOGQ",
-        "Balance": 900,
+        "Balance": 700,
         "transactions": [
             {
                 "type": "Deposit",
@@ -16,6 +16,11 @@
                 "type": "Withdraw",
                 "amount": 100,
                 "time": "2025-12-02 15:20:10"
+            },
+            {
+                "type": "Withdraw",
+                "amount": 200,
+                "time": "2025-12-02 17:18:30"
             }
         ]
     }

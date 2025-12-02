@@ -34,7 +34,7 @@ st.markdown("""
 st.markdown("<h1 class='main-title'>🏦 Secure Bank App</h1>", unsafe_allow_html=True)
 
 
-st.title("🏦 Secure Bank App")
+# st.title("🏦 Secure Bank App")
 
 menu = st.sidebar.radio("Menu", [
     "Create Account", "Login", "Admin"
