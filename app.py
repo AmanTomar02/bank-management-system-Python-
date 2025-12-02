@@ -1,6 +1,6 @@
-import streamlit as st
+import streamlit as st # type: ignore
 from bank import Bank
-import pandas as pd
+import pandas as pd #type: ignore
 
 
 # SESSION STATE FOR ADMIN LOGIN
