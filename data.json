@@ -1,34 +1,22 @@
 [
     {
-        "name": "harsh",
-        "Age": 23,
-        "email": "harsh@gmial.com",
-        "Pin": "1234",
-        "Account_Number": "8LOU6%",
-        "Balance": 0
-    },
-    {
-        "name": "maan",
-        "Age": 23,
-        "email": "maan@gmail.com\t",
-        "Pin": "1234",
-        "Account_Number": "J#47hR",
-        "Balance": 3000
-    },
-    {
         "name": "Aman",
-        "Age": 18,
-        "email": "at8871790@gmail.com",
-        "Pin": 1234,
-        "Account_Number": "ADGePY",
-        "Balance": 0
-    },
-    {
-        "name": "akash",
-        "Age": 18,
-        "email": "akash@gmail.com",
-        "Pin": 1234,
-        "Account_Number": "HxiGQj",
-        "Balance": 0
+        "Age": 23,
+        "email": "Aman@gmail.com",
+        "Pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+        "Account_Number": "6XCBNOGQ",
+        "Balance": 900,
+        "transactions": [
+            {
+                "type": "Deposit",
+                "amount": 1000,
+                "time": "2025-12-02 15:20:02"
+            },
+            {
+                "type": "Withdraw",
+                "amount": 100,
+                "time": "2025-12-02 15:20:10"
+            }
+        ]
     }
 ]
