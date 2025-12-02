@@ -1,10 +1,13 @@
-import json, random, string, hashlib
+import json, random, string, hashlib, pandas as pd
 from pathlib import Path
 from datetime import datetime
 
 class Bank:
     dataBase = 'data.json'
     data = []
+
+    ADMIN_USER = "admin"
+    ADMIN_PASS = "1234"
 
     # Load data
     if Path(dataBase).exists():
@@ -62,7 +65,6 @@ class Bank:
         Bank.__update()
         return user
 
-
     # Deposit
     def deposit(self, acc, pin, amount):
         user = Bank.find_user(acc, pin)
@@ -75,7 +77,6 @@ class Bank:
         Bank.add_transaction(user, "Deposit", amount)
         Bank.__update()
         return "Deposit successful ✅"
-
 
     # Withdraw
     def withdraw(self, acc, pin, amount):
@@ -90,13 +91,11 @@ class Bank:
         Bank.__update()
         return "Withdraw successful ✅"
 
-
     # Details
     def get_details(self, acc, pin):
         return Bank.find_user(acc, pin)
 
-
-    # Delete
+    # Delete own account
     def delete(self, acc, pin):
         user = Bank.find_user(acc, pin)
         if not user:
@@ -105,46 +104,33 @@ class Bank:
         Bank.data.remove(user)
         Bank.__update()
         return True
-    
-    # Admin delete user
+
+    # ---------------- ADMIN METHODS ----------------
+
+    @classmethod
+    def admin_login(cls, user, pwd):
+        return user == cls.ADMIN_USER and pwd == cls.ADMIN_PASS
+
+    @classmethod
+    def get_all_users(cls):
+        return cls.data
+
     @classmethod
     def admin_delete_user(cls, account_number):
         for user in cls.data:
             if user["Account_Number"] == account_number:
                 cls.data.remove(user)
-                cls._Bank__update()
+                cls.__update()
                 return True
         return False
 
-
-
-
-import pandas as pd
-
-class Bank(Bank):   # extend same class
-
-    ADMIN_USER = "admin"
-    ADMIN_PASS = "1234"
-
-    # Admin Login
-    @classmethod
-    def admin_login(cls, user, pwd):
-        return user == cls.ADMIN_USER and pwd == cls.ADMIN_PASS
-
-    # Get all users
-    @classmethod
-    def get_all_users(cls):
-        return cls.data
-
-    # Export user data
     @classmethod
     def export_users(cls):
         df = pd.DataFrame(cls.data)
         df.drop(columns=["Pin"], inplace=True)
         df.to_excel("users.xlsx", index=False)
-        return "User data exported as users.xlsx"
+        return "User data exported as users.xlsx ✅"
 
-    # Export transaction history
     @classmethod
     def export_transactions(cls):
         rows = []
@@ -160,4 +146,4 @@ class Bank(Bank):   # extend same class
 
         df = pd.DataFrame(rows)
         df.to_excel("transactions.xlsx", index=False)
-        return "Transactions exported as transactions.xlsx"
+        return "Transaction data exported ✅"
