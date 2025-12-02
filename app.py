@@ -1,11 +1,39 @@
 import streamlit as st
 from bank import Bank
+import pandas as pd
+
 
 # SESSION STATE FOR ADMIN LOGIN
 if "admin_logged_in" not in st.session_state:
     st.session_state["admin_logged_in"] = False
 
 bank = Bank()
+
+# Global CSS for cleaner UI
+st.markdown("""
+    <style>
+        .main-title {
+            text-align: center;
+            font-size: 42px !important;
+            font-weight: 700 !important;
+            padding: 10px 0;
+            color: #2c2c2c;
+        }
+        .sub-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .stTable {
+            text-align: center !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown("<h1 class='main-title'>🏦 Secure Bank App</h1>", unsafe_allow_html=True)
+
+
 st.title("🏦 Secure Bank App")
 
 menu = st.sidebar.radio("Menu", [
@@ -108,7 +136,8 @@ elif menu == "Login":
 # ADMIN PANEL
 # -----------------------------------------
 elif menu == "Admin":
-    st.subheader("Admin Login")
+    st.markdown("<h2 class='sub-title'>Admin Login</h2>", unsafe_allow_html=True)
+
 
     # IF ADMIN NOT LOGGED IN
     if not st.session_state["admin_logged_in"]:
@@ -138,7 +167,18 @@ elif menu == "Admin":
 
         # VIEW USERS
         if admin_action == "View Users":
-            st.table(Bank.get_all_users())
+            # st.table(Bank.get_all_users())
+            users = Bank.get_all_users()
+            # Clean transactions for view
+            cleaned_users = []
+            for u in users:
+                temp = u.copy()
+                temp["transactions"] = len(u.get("transactions", []))  # Only show count
+                cleaned_users.append(temp)
+
+            st.dataframe(pd.DataFrame(cleaned_users))
+
+            
 
         # DELETE USER
         if admin_action == "Delete User":
